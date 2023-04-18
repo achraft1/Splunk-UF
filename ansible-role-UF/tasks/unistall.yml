@@ -1,0 +1,23 @@
+---
+#Role to delete splunk forwarder agent ref https://docs.splunk.com/Documentation/Forwarder/9.0.4/Forwarder/Uninstalltheuniversalforwarder
+# created by Achraf Trabelsi
+- name : Stop the forwarder
+  shell:
+    cmd: "$SPLUNK_HOME/bin/splunk stop"
+  become: yes
+  become_user: splunk
+  become_method: "su"
+  
+- name : Find any lingering processes that contain "splunk"
+  shell:
+    cmd: "kill -9 `ps -ef | grep splunk | grep -v grep | awk '{print $2;}'`"
+
+- name : Remove the universal forwarder installation directory
+  shell:
+    cmd: "rm -rf /opt/splunkforwarder"
+
+- name : Delete any splunk users and groups
+  shell:
+    cmd: "userdel splunk & groupdel splunk"
+    
+...

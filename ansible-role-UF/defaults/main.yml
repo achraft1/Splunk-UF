@@ -1,0 +1,19 @@
+---
+splunk_forwarder_user: "splunk"
+splunk_forwarder_group: "splunk"
+splunk_forwarder_uid: "10011"
+splunk_forwarder_gid: "10011"
+splunk_release: "9.0.4"
+splunk_url: "https://download.splunk.com/products/universalforwarder/releases/{{ splunk_release }}/linux"
+#http://cpl1-infr-yum.capitale.qc.ca/splunk/
+splunk_forwarder_rpm: "splunkforwarder-9.0.4-de405f4a7979-linux-2.6-x86_64.rpm"
+splunk_rpm: "{{ splunk_url }}/{{ splunk_forwarder_rpm }}"
+splunk_rpm_checksum: "md5:b2a72556d71faee1825a559eaa25aa31"
+
+# These may be removed at some point, but they are placeholders so I don't forget to set them
+splunk_forwarder_indexer: "splunk-indexer:9997"
+splunk_forwarder_index: "default"
+splunk_forwarder_sourcetype: "nginx"
+
+splunk_forwarder_logs: []
+splunk_forwarder_depl_server: "splunk_ds.beneva.ca"
